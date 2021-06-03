@@ -41,6 +41,8 @@ class _HomePageState extends State<HomePage> {
               },
               child: PageView(
                 controller: _controller,
+                onPageChanged: (index) =>
+                    context.read<HomeCubitCubit>().goToPage(index),
                 children: [
                   Container(
                     height: double.infinity,
@@ -89,6 +91,7 @@ class _HomePageState extends State<HomePage> {
                   onTap: (index) {
                     context.read<HomeCubitCubit>().goToPage(index);
                   },
+                  activeColor: Colors.red,
                   items: const [
                     BottomNavigationBarItem(
                       icon: Icon(Icons.home),
