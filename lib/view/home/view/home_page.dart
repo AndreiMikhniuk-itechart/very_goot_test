@@ -35,14 +35,13 @@ class _HomePageState extends State<HomePage> {
           return Scaffold(
             body: BlocListener<HomeCubitCubit, HomeCubitState>(
               listener: (context, state) {
-                _controller.animateToPage(state.currentIndex,
-                    duration: const Duration(milliseconds: 200),
-                    curve: Curves.easeInOut);
+                _controller.jumpToPage(
+                  state.currentIndex,
+                );
               },
               child: PageView(
                 controller: _controller,
-                onPageChanged: (index) =>
-                    context.read<HomeCubitCubit>().goToPage(index),
+                physics: const NeverScrollableScrollPhysics(),
                 children: [
                   Container(
                     height: double.infinity,
